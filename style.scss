@@ -1,0 +1,312 @@
+* {
+	padding: 0;
+	margin: 0;
+	box-sizing: border-box;
+	outline: none;
+	border: none;
+	font-family:'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+}
+
+body {
+	display: flex;
+	align-items: center;
+	flex-flow: column wrap;
+	width: 100vw;
+	min-height: 100vh;
+	background: linear-gradient(120deg,#e0c3fc,#8ec5fc);
+	position: relative;
+}
+
+.head {
+	display: flex;
+	flex-direction: row;
+	position: relative;
+	top: 2em;
+}
+.input {
+	position: relative;
+	margin-right: 30px;
+	transition: all 0.5s ease;
+	
+	& input {
+		font-size: 1.4em;
+		background-color: #fafafa;
+		width: 450px;
+		padding: 20px 40px 20px 20px;
+		box-shadow: 0px 1px 3px rgb(143, 143, 143);
+		margin-left: 10px;
+		border-radius: 50px;
+		transition: all 0.5s ease;
+		
+		&::placeholder {
+			opacity: 0.5;
+			transition: all 0.5s ease;
+		}
+
+		&:focus {
+			box-shadow: 0px 0px 15px lightcoral;
+			transition: all 0.5s ease;
+		}
+	}
+
+	& button {
+		position: absolute;
+		right: 15px;
+		top: 50%;
+		margin-top: -1.2rem;
+		font-size: 1.8em;
+		background: #fafafa;
+		border: none;
+		outline: none;
+		cursor: pointer;
+		color: lightcoral;
+		transition: all 0.5s ease;
+
+		& i {
+			pointer-events: none;
+		}
+	}
+}
+
+.search {
+	position: relative;
+	transition: all 0.5s ease;
+	margin-right: 25px;
+	
+	& input {
+		box-shadow: 0px 1px 3px rgb(143, 143, 143);
+		border-radius: 50px;
+		padding: 20px;
+		background-color: #fafafa;
+		font-size: 1.4em;
+		width: 200px;
+		transition: all 0.5s ease;
+
+		&::placeholder {
+			opacity: 0.5;
+			transition: all 0.5s ease;
+		}
+
+		&:focus {
+			box-shadow: 0px 0px 15px lightcoral;
+			transition: all 0.5s ease;
+		}
+	}
+
+	& button {
+		background: none;
+		cursor: pointer;
+		position: absolute;
+		top: 50%;
+		right: 0px;
+		font-size: 2em;
+		margin-top: -1em;
+		padding: 10px 15px;
+		border-radius: 50px;
+		color: lightcoral;
+		transition: all 0.5s ease;
+	}
+}
+
+.notes {
+	display: flex;
+	width: 100vw;
+	flex-flow: row wrap;
+	position: relative;
+	justify-content: space-around;
+	margin-top: 4em;
+	transition: all 0.5s ease;
+}
+
+.note {
+	border: 2px solid white;
+	box-shadow: 0px 1px 3px rgb(141, 141, 141);
+	background: linear-gradient(
+		to right,
+		#f78ca0 0%,
+		#f9748f 19%,
+		#fd868c 60%,
+		#fe9a8b 100%
+	);
+	height: auto;
+	width: 200px;
+	border-radius: 14px;
+	color: #fafafa;
+	margin: 1em;
+	position: relative;
+	display: flex;
+	transition: all 0.5s ease;
+	opacity: 1;
+
+	& p {
+		padding: 1.3rem;
+	}
+
+	& i {
+		position: absolute;
+		top: 0.5rem;
+		right: 0.4rem;
+		cursor: pointer;
+	}
+}
+
+.animate {
+	opacity: 0;
+	transition: all 0.5s ease;
+}
+
+.hidden {
+	display: none;
+}
+
+.themes {
+	position: relative;
+	border: 5px solid #1A1B2F;
+	width: 100px;
+	height: 64px;
+	font-size: 2.5em;
+	margin: 5px;
+	border-radius: 50px;
+	background-color: #fafafa;
+	box-shadow: 0px 1px 3px rgb(143, 143, 143);
+	transition: all 0.5s ease;
+	
+	& .day {
+		position: absolute;
+		display: inline-block;
+		top: 50%;
+		left: -5px;
+		padding: 30px;
+		border-radius: 40px;
+		width: 1.2em;
+		height: 1.2em;
+		margin-top: -0.85em;
+		text-align: center;
+		line-height: 1.2em;
+		border: 5px solid #1A1B2F;
+		background-color: white;
+		cursor: pointer;
+		transition: all 0.5s ease;
+		opacity: 1;
+		
+		& i {
+			position: absolute;
+			top: 50%;
+			left: 50%;
+			margin-top: -0.5em;
+			margin-left: -0.5em;
+			font-size: 0.7em;
+		}
+	}
+	
+	& .night {
+		cursor: pointer;
+		width: 1.2em;
+		position: absolute;
+		top: 50%;
+		left: -5px;
+		margin-top: -0.85em;
+		height: 1.2em;
+		visibility: hidden;
+		text-align: center;
+		line-height: 1.2em;
+		padding: 30px;
+		border-radius: 40px;
+		transition: all 0.5s ease;
+		opacity: 0;
+		border: 5px solid #1A1B2F;
+
+		& i {
+			position: absolute;
+			top: 50%;
+			left: 50%;
+			margin-top: -0.5em;
+			margin-left: -0.5em;
+			font-size: 0.7em;
+		}
+	}
+
+	&.active {
+		background-color: #1A1B2F;
+		border: 5px solid #fafafa; 
+		transition: all 0.5s ease;
+		
+		& .day {
+			opacity: 0;
+			transform: translateX(36px);
+			// display: none;
+			transition: all 0.5s ease;
+		}
+		
+		& .night {
+			visibility: visible;
+			color: #fafafa;
+			border: 5px solid #fafafa;
+			background-color: #1A1B2F;
+			transform: translateX(36px);
+			transition: all 0.5s ease;
+			opacity: 1;
+		}
+	}
+}
+
+// Dark Mode
+
+body.active {
+	background: linear-gradient(120deg, #2C3E50, #1A1B2F);
+	& .note {
+		background:linear-gradient(to left, #FFA286, #FF6E3E);
+		box-shadow: 0px 1px 4px black;
+		color: #fafafa;
+		transition: all 0.5s ease;
+	}
+
+	& .input {
+		& input {
+			background-color: #1A1B2F;
+			box-shadow: 0px 1px 2px #fafafa;
+			transition: all 0.5s ease;
+			border: 3px solid #fafafa;
+			color: #fafafa;
+
+			&::placeholder {
+				color:rgb(197, 197, 197);
+				transition: all 0.5s ease;
+			}
+
+			&:focus {
+				box-shadow: 0px 1px 10px #dbdbdb;
+				transition: all 0.5s ease;
+			}
+		}
+		& button{
+			color:#E74C06;
+			transition: all 0.5s ease;
+			background:  #1A1B2F;
+		}
+	}
+
+	& .search {
+		& input {
+			background-color: #1A1B2F;
+			box-shadow: 0px 1px 2px #fafafa;
+			transition: all 0.5s ease;
+			border: 3px solid #fafafa;
+			color: #fafafa;
+
+			&::placeholder {
+				color:rgb(197, 197, 197);
+				transition: all 0.5s ease;
+			}
+
+			&:focus {
+				box-shadow: 0px 1px 10px #dbdbdb;
+				transition: all 0.5s ease;
+			}
+		}
+		& button {
+			color: #E74C06;
+			transition: all 0.5s ease;
+		}
+	}
+}
