@@ -11,22 +11,27 @@ body {
 	display: flex;
 	align-items: center;
 	flex-flow: column wrap;
-	width: 100vw;
+	// width: 100vw;
 	min-height: 100vh;
 	background: linear-gradient(120deg,#e0c3fc,#8ec5fc);
 	position: relative;
+	// overflow-x: hidden;
 }
 
 .head {
 	display: flex;
 	flex-direction: row;
 	position: relative;
+	justify-content: center;
+	align-items:center;
 	top: 2em;
+	max-width: 100%;
 }
 .input {
 	position: relative;
-	margin-right: 30px;
 	transition: all 0.5s ease;
+	width: 450px;
+	margin-right: 30px;
 	
 	& input {
 		font-size: 1.4em;
@@ -34,7 +39,6 @@ body {
 		width: 450px;
 		padding: 20px 40px 20px 20px;
 		box-shadow: 0px 1px 3px rgb(143, 143, 143);
-		margin-left: 10px;
 		border-radius: 50px;
 		transition: all 0.5s ease;
 		
@@ -54,7 +58,7 @@ body {
 		right: 15px;
 		top: 50%;
 		margin-top: -1.2rem;
-		font-size: 1.8em;
+		font-size: 1.8rem;
 		background: #fafafa;
 		border: none;
 		outline: none;
@@ -72,6 +76,7 @@ body {
 	position: relative;
 	transition: all 0.5s ease;
 	margin-right: 25px;
+	width: 200px;
 	
 	& input {
 		box-shadow: 0px 1px 3px rgb(143, 143, 143);
@@ -110,7 +115,6 @@ body {
 
 .notes {
 	display: flex;
-	width: 100vw;
 	flex-flow: row wrap;
 	position: relative;
 	justify-content: space-around;
@@ -128,8 +132,8 @@ body {
 		#fd868c 60%,
 		#fe9a8b 100%
 	);
-	height: auto;
-	width: 200px;
+	height: fit-content;
+	width: 13em;
 	border-radius: 14px;
 	color: #fafafa;
 	margin: 1em;
@@ -137,18 +141,52 @@ body {
 	display: flex;
 	transition: all 0.5s ease;
 	opacity: 1;
-
+	font-size: 1em;
+	
 	& p {
+		width: inherit;
 		padding: 1.3rem;
+		margin-top: 0.5rem;
+		overflow-wrap: break-word;
 	}
 
-	& i {
+	& .fa-times {
 		position: absolute;
 		top: 0.5rem;
 		right: 0.4rem;
 		cursor: pointer;
 	}
+	& .edit {
+		position: absolute;
+		top: 0.5rem;
+		right: 3rem;
+		cursor: pointer;
+	}
+
+	& textarea {
+		width: inherit;
+		border-radius: 15px;
+		height: 10em;
+		resize: none;
+		font-size: 1em;
+		padding: 1.3rem;
+		margin-top: 0.5rem;
+		overflow-wrap: break-word;
+		color: #1A1B2F;
+		background: linear-gradient(
+			to right,
+			#f89bac 0%,
+			#ff8da4 19%,
+			#ff9ba0 60%,
+			#ffada1 100%
+		);
+	}
 }
+
+// Edit mode
+// .note.editing textarea{
+// 	color: red;
+// }
 
 .animate {
 	opacity: 0;
@@ -159,17 +197,28 @@ body {
 	display: none;
 }
 
+.error {
+	position: absolute;
+	text-align: center;
+	top: 0px;
+	left: 50%;
+	width: 300px;
+	margin-left: -150px;
+	color: rgb(161, 0, 0);
+	// border: 1px solid green;
+}
+
 .themes {
 	position: relative;
 	border: 5px solid #1A1B2F;
 	width: 100px;
 	height: 64px;
 	font-size: 2.5em;
-	margin: 5px;
 	border-radius: 50px;
 	background-color: #fafafa;
 	box-shadow: 0px 1px 3px rgb(143, 143, 143);
 	transition: all 0.5s ease;
+	cursor: pointer;
 	
 	& .day {
 		position: absolute;
@@ -185,7 +234,6 @@ body {
 		line-height: 1.2em;
 		border: 5px solid #1A1B2F;
 		background-color: white;
-		cursor: pointer;
 		transition: all 0.5s ease;
 		opacity: 1;
 		
@@ -200,7 +248,6 @@ body {
 	}
 	
 	& .night {
-		cursor: pointer;
 		width: 1.2em;
 		position: absolute;
 		top: 50%;
@@ -251,14 +298,19 @@ body {
 }
 
 // Dark Mode
-
 body.active {
 	background: linear-gradient(120deg, #2C3E50, #1A1B2F);
 	& .note {
-		background:linear-gradient(to left, #FFA286, #FF6E3E);
-		box-shadow: 0px 1px 4px black;
-		color: #fafafa;
+		background: linear-gradient(to top, #141e30, #243b55);
+		border: 3px solid #fafafa;
+		box-shadow: 0px 0px 2px #fafafa;
+		color: #e2e2e2;
 		transition: all 0.5s ease;
+
+		& textarea {
+			background: linear-gradient(to top, #0b223b,#151f31);
+			color: #fafafa;
+		}
 	}
 
 	& .input {
@@ -308,5 +360,57 @@ body.active {
 			color: #E74C06;
 			transition: all 0.5s ease;
 		}
+	}
+}
+
+@media (max-width: 870px) {
+	.head {
+		flex-flow: row wrap;
+		margin-right: 0px;
+		width: 500px;
+		transition: all 0.5s ease;
+	}
+	.input {
+		margin-right: 0px;
+	}
+
+	.search {
+		margin-top: 1rem;
+		transition: all 0.5s ease;
+	}
+
+	.themes {
+		margin-top: 1rem;
+		transition: all 0.5s ease;
+	}
+
+	.note {
+		margin: 0.5em;
+	}
+}
+
+@media (max-width: 480px) {
+	.head {
+		min-width: 352px;
+	}
+	.input {
+		transform: scale(0.7);
+	}
+
+	.search {
+		margin-top: 0rem;
+		transform: scale(0.7);
+	}
+	
+	.themes {
+		margin-top: 0.4rem;
+		margin-right: 0px;
+		transform: scale(0.7);
+	}
+
+	.note {
+		width: 9em;
+		font-size: 0.9em;
+		transition: all 0.5s ease;
 	}
 }

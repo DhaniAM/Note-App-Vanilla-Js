@@ -19,7 +19,6 @@ body {
   -webkit-box-direction: normal;
       -ms-flex-flow: column wrap;
           flex-flow: column wrap;
-  width: 100vw;
   min-height: 100vh;
   background: linear-gradient(120deg, #e0c3fc, #8ec5fc);
   position: relative;
@@ -34,14 +33,22 @@ body {
       -ms-flex-direction: row;
           flex-direction: row;
   position: relative;
+  -webkit-box-pack: center;
+      -ms-flex-pack: center;
+          justify-content: center;
+  -webkit-box-align: center;
+      -ms-flex-align: center;
+          align-items: center;
   top: 2em;
+  max-width: 100%;
 }
 
 .input {
   position: relative;
-  margin-right: 30px;
   -webkit-transition: all 0.5s ease;
   transition: all 0.5s ease;
+  width: 450px;
+  margin-right: 30px;
 }
 
 .input input {
@@ -51,7 +58,6 @@ body {
   padding: 20px 40px 20px 20px;
   -webkit-box-shadow: 0px 1px 3px #8f8f8f;
           box-shadow: 0px 1px 3px #8f8f8f;
-  margin-left: 10px;
   border-radius: 50px;
   -webkit-transition: all 0.5s ease;
   transition: all 0.5s ease;
@@ -93,7 +99,7 @@ body {
   right: 15px;
   top: 50%;
   margin-top: -1.2rem;
-  font-size: 1.8em;
+  font-size: 1.8rem;
   background: #fafafa;
   border: none;
   outline: none;
@@ -112,6 +118,7 @@ body {
   -webkit-transition: all 0.5s ease;
   transition: all 0.5s ease;
   margin-right: 25px;
+  width: 200px;
 }
 
 .search input {
@@ -176,7 +183,6 @@ body {
   display: -webkit-box;
   display: -ms-flexbox;
   display: flex;
-  width: 100vw;
   -webkit-box-orient: horizontal;
   -webkit-box-direction: normal;
       -ms-flex-flow: row wrap;
@@ -195,8 +201,10 @@ body {
           box-shadow: 0px 1px 3px #8d8d8d;
   background: -webkit-gradient(linear, left top, right top, from(#f78ca0), color-stop(19%, #f9748f), color-stop(60%, #fd868c), to(#fe9a8b));
   background: linear-gradient(to right, #f78ca0 0%, #f9748f 19%, #fd868c 60%, #fe9a8b 100%);
-  height: auto;
-  width: 200px;
+  height: -webkit-fit-content;
+  height: -moz-fit-content;
+  height: fit-content;
+  width: 13em;
   border-radius: 14px;
   color: #fafafa;
   margin: 1em;
@@ -207,17 +215,42 @@ body {
   -webkit-transition: all 0.5s ease;
   transition: all 0.5s ease;
   opacity: 1;
+  font-size: 1em;
 }
 
 .note p {
+  width: inherit;
   padding: 1.3rem;
+  margin-top: 0.5rem;
+  overflow-wrap: break-word;
 }
 
-.note i {
+.note .fa-times {
   position: absolute;
   top: 0.5rem;
   right: 0.4rem;
   cursor: pointer;
+}
+
+.note .edit {
+  position: absolute;
+  top: 0.5rem;
+  right: 3rem;
+  cursor: pointer;
+}
+
+.note textarea {
+  width: inherit;
+  border-radius: 15px;
+  height: 10em;
+  resize: none;
+  font-size: 1em;
+  padding: 1.3rem;
+  margin-top: 0.5rem;
+  overflow-wrap: break-word;
+  color: #1A1B2F;
+  background: -webkit-gradient(linear, left top, right top, from(#f89bac), color-stop(19%, #ff8da4), color-stop(60%, #ff9ba0), to(#ffada1));
+  background: linear-gradient(to right, #f89bac 0%, #ff8da4 19%, #ff9ba0 60%, #ffada1 100%);
 }
 
 .animate {
@@ -230,19 +263,29 @@ body {
   display: none;
 }
 
+.error {
+  position: absolute;
+  text-align: center;
+  top: 0px;
+  left: 50%;
+  width: 300px;
+  margin-left: -150px;
+  color: #a10000;
+}
+
 .themes {
   position: relative;
   border: 5px solid #1A1B2F;
   width: 100px;
   height: 64px;
   font-size: 2.5em;
-  margin: 5px;
   border-radius: 50px;
   background-color: #fafafa;
   -webkit-box-shadow: 0px 1px 3px #8f8f8f;
           box-shadow: 0px 1px 3px #8f8f8f;
   -webkit-transition: all 0.5s ease;
   transition: all 0.5s ease;
+  cursor: pointer;
 }
 
 .themes .day {
@@ -259,7 +302,6 @@ body {
   line-height: 1.2em;
   border: 5px solid #1A1B2F;
   background-color: white;
-  cursor: pointer;
   -webkit-transition: all 0.5s ease;
   transition: all 0.5s ease;
   opacity: 1;
@@ -275,7 +317,6 @@ body {
 }
 
 .themes .night {
-  cursor: pointer;
   width: 1.2em;
   position: absolute;
   top: 50%;
@@ -334,13 +375,20 @@ body.active {
 }
 
 body.active .note {
-  background: -webkit-gradient(linear, right top, left top, from(#FFA286), to(#FF6E3E));
-  background: linear-gradient(to left, #FFA286, #FF6E3E);
-  -webkit-box-shadow: 0px 1px 4px black;
-          box-shadow: 0px 1px 4px black;
-  color: #fafafa;
+  background: -webkit-gradient(linear, left bottom, left top, from(#141e30), to(#243b55));
+  background: linear-gradient(to top, #141e30, #243b55);
+  border: 3px solid #fafafa;
+  -webkit-box-shadow: 0px 0px 2px #fafafa;
+          box-shadow: 0px 0px 2px #fafafa;
+  color: #e2e2e2;
   -webkit-transition: all 0.5s ease;
   transition: all 0.5s ease;
+}
+
+body.active .note textarea {
+  background: -webkit-gradient(linear, left bottom, left top, from(#0b223b), to(#151f31));
+  background: linear-gradient(to top, #0b223b, #151f31);
+  color: #fafafa;
 }
 
 body.active .input input {
@@ -436,5 +484,61 @@ body.active .search button {
   color: #E74C06;
   -webkit-transition: all 0.5s ease;
   transition: all 0.5s ease;
+}
+
+@media (max-width: 870px) {
+  .head {
+    -webkit-box-orient: horizontal;
+    -webkit-box-direction: normal;
+        -ms-flex-flow: row wrap;
+            flex-flow: row wrap;
+    margin-right: 0px;
+    width: 500px;
+    -webkit-transition: all 0.5s ease;
+    transition: all 0.5s ease;
+  }
+  .input {
+    margin-right: 0px;
+  }
+  .search {
+    margin-top: 1rem;
+    -webkit-transition: all 0.5s ease;
+    transition: all 0.5s ease;
+  }
+  .themes {
+    margin-top: 1rem;
+    -webkit-transition: all 0.5s ease;
+    transition: all 0.5s ease;
+  }
+  .note {
+    margin: 0.5em;
+  }
+}
+
+@media (max-width: 480px) {
+  .head {
+    min-width: 352px;
+  }
+  .input {
+    -webkit-transform: scale(0.7);
+            transform: scale(0.7);
+  }
+  .search {
+    margin-top: 0rem;
+    -webkit-transform: scale(0.7);
+            transform: scale(0.7);
+  }
+  .themes {
+    margin-top: 0.4rem;
+    margin-right: 0px;
+    -webkit-transform: scale(0.7);
+            transform: scale(0.7);
+  }
+  .note {
+    width: 9em;
+    font-size: 0.9em;
+    -webkit-transition: all 0.5s ease;
+    transition: all 0.5s ease;
+  }
 }
 /*# sourceMappingURL=style.css.map */
