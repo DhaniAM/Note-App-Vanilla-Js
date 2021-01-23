@@ -5,7 +5,7 @@
           box-sizing: border-box;
   outline: none;
   border: none;
-  font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+  font-family: "Segoe UI", Tahoma, Geneva, Verdana, sans-serif;
 }
 
 body {
@@ -240,7 +240,7 @@ body {
 }
 
 .note textarea {
-  width: inherit;
+  width: 100%;
   border-radius: 15px;
   height: 10em;
   resize: none;
@@ -248,7 +248,7 @@ body {
   padding: 1.3rem;
   margin-top: 0.5rem;
   overflow-wrap: break-word;
-  color: #1A1B2F;
+  color: #1a1b2f;
   background: -webkit-gradient(linear, left top, right top, from(#f89bac), color-stop(19%, #ff8da4), color-stop(60%, #ff9ba0), to(#ffada1));
   background: linear-gradient(to right, #f89bac 0%, #ff8da4 19%, #ff9ba0 60%, #ffada1 100%);
 }
@@ -275,7 +275,7 @@ body {
 
 .themes {
   position: relative;
-  border: 5px solid #1A1B2F;
+  border: 5px solid #1a1b2f;
   width: 100px;
   height: 64px;
   font-size: 2.5em;
@@ -300,7 +300,7 @@ body {
   margin-top: -0.85em;
   text-align: center;
   line-height: 1.2em;
-  border: 5px solid #1A1B2F;
+  border: 5px solid #1a1b2f;
   background-color: white;
   -webkit-transition: all 0.5s ease;
   transition: all 0.5s ease;
@@ -331,7 +331,7 @@ body {
   -webkit-transition: all 0.5s ease;
   transition: all 0.5s ease;
   opacity: 0;
-  border: 5px solid #1A1B2F;
+  border: 5px solid #1a1b2f;
 }
 
 .themes .night i {
@@ -344,7 +344,7 @@ body {
 }
 
 .themes.active {
-  background-color: #1A1B2F;
+  background-color: #1a1b2f;
   border: 5px solid #fafafa;
   -webkit-transition: all 0.5s ease;
   transition: all 0.5s ease;
@@ -362,7 +362,7 @@ body {
   visibility: visible;
   color: #fafafa;
   border: 5px solid #fafafa;
-  background-color: #1A1B2F;
+  background-color: #1a1b2f;
   -webkit-transform: translateX(36px);
           transform: translateX(36px);
   -webkit-transition: all 0.5s ease;
@@ -371,15 +371,15 @@ body {
 }
 
 body.active {
-  background: linear-gradient(120deg, #2C3E50, #1A1B2F);
+  background: linear-gradient(-120deg, #2c3e50, #1a1b2f);
 }
 
 body.active .note {
-  background: -webkit-gradient(linear, left bottom, left top, from(#141e30), to(#243b55));
-  background: linear-gradient(to top, #141e30, #243b55);
-  border: 3px solid #fafafa;
-  -webkit-box-shadow: 0px 0px 2px #fafafa;
-          box-shadow: 0px 0px 2px #fafafa;
+  background: -webkit-gradient(linear, left top, right top, from(#141e30), to(#243b55));
+  background: linear-gradient(to right, #141e30, #243b55);
+  border: 1px solid #fafafa;
+  -webkit-box-shadow: 0px 1px 2px #fafafa;
+          box-shadow: 0px 1px 2px #fafafa;
   color: #e2e2e2;
   -webkit-transition: all 0.5s ease;
   transition: all 0.5s ease;
@@ -392,12 +392,12 @@ body.active .note textarea {
 }
 
 body.active .input input {
-  background-color: #1A1B2F;
+  background-color: #1a1b2f;
   -webkit-box-shadow: 0px 1px 2px #fafafa;
           box-shadow: 0px 1px 2px #fafafa;
   -webkit-transition: all 0.5s ease;
   transition: all 0.5s ease;
-  border: 3px solid #fafafa;
+  border: 2px solid #fafafa;
   color: #fafafa;
 }
 
@@ -433,19 +433,19 @@ body.active .input input:focus {
 }
 
 body.active .input button {
-  color: #E74C06;
+  color: #e74c06;
   -webkit-transition: all 0.5s ease;
   transition: all 0.5s ease;
-  background: #1A1B2F;
+  background: #1a1b2f;
 }
 
 body.active .search input {
-  background-color: #1A1B2F;
+  background-color: #1a1b2f;
   -webkit-box-shadow: 0px 1px 2px #fafafa;
           box-shadow: 0px 1px 2px #fafafa;
   -webkit-transition: all 0.5s ease;
   transition: all 0.5s ease;
-  border: 3px solid #fafafa;
+  border: 2px solid #fafafa;
   color: #fafafa;
 }
 
@@ -481,7 +481,7 @@ body.active .search input:focus {
 }
 
 body.active .search button {
-  color: #E74C06;
+  color: #e74c06;
   -webkit-transition: all 0.5s ease;
   transition: all 0.5s ease;
 }
@@ -517,16 +517,33 @@ body.active .search button {
 
 @media (max-width: 480px) {
   .head {
-    min-width: 352px;
+    min-width: 300px;
   }
   .input {
-    -webkit-transform: scale(0.7);
-            transform: scale(0.7);
+    width: 300px;
+  }
+  .input input {
+    width: 300px;
+    font-size: 0.7rem;
+    padding: 10px 20px 10px 10px;
+  }
+  .input button {
+    font-size: 1.2rem;
+    margin-top: -0.9rem;
+    right: 10px;
   }
   .search {
     margin-top: 0rem;
-    -webkit-transform: scale(0.7);
-            transform: scale(0.7);
+    width: 150px;
+  }
+  .search input {
+    width: 150px;
+    padding: 7px;
+    font-size: 0.7rem;
+  }
+  .search button {
+    font-size: 1.2rem;
+    margin-top: -1.4rem;
   }
   .themes {
     margin-top: 0.4rem;

@@ -16,15 +16,15 @@ window.addEventListener("load", () => {
 // Input
 inputBtn.addEventListener("click", e => {
 	// if not duplicate and not empty
-	if(isDuplicate(inputText.value) || inputText.value === "") {
+	if (isDuplicate(inputText.value) || inputText.value === "") {
 		showError(inputText.value);
 	} else {
 		inputHandler(e);
 	}
 });
 inputText.addEventListener("keyup", e => {
-	if(e.keyCode === 13) {
-		if(isDuplicate(inputText.value) || inputText.value === "") {
+	if (e.keyCode === 13) {
+		if (isDuplicate(inputText.value) || inputText.value === "") {
 			showError(inputText.value);
 		} else {
 			inputHandler(e);
@@ -39,9 +39,9 @@ searchText.addEventListener("keypress", e =>
 );
 searchText.addEventListener("input", showAll);
 // Notes
-notes.addEventListener("click", (e) => {
-	if(e.target.classList.contains("fa-times")) {
-		removeNote(e)
+notes.addEventListener("click", e => {
+	if (e.target.classList.contains("fa-times")) {
+		removeNote(e);
 	} else if (e.target.classList.contains("fa-edit")) {
 		editNote(e);
 	} else if (e.target.classList.contains("fa-check")) {
@@ -67,7 +67,7 @@ function inputHandler() {
 }
 
 function getNote() {
-	if (localStorage) {
+	if (localStorage.getItem("noteList") !== null) {
 		const savedNotes = JSON.parse(
 			localStorage.getItem("noteList")
 		);
@@ -98,13 +98,16 @@ function removeNote(e) {
 	const note = e.target.parentNode;
 	const noteText = note.querySelector("p").innerText;
 	// If clicking X icon && If note is not in edit mode, then you can delete
-	if (e.target.classList.contains("fa-times") && !(note.classList.contains("editing"))) {
+	if (
+		e.target.classList.contains("fa-times") &&
+		!note.classList.contains("editing")
+	) {
 		deleteFromLocalStorage(noteText);
 		note.classList.add("animate");
 		setTimeout(() => {
 			e.target.parentNode.remove();
 		}, 500);
-	// Canceling edit
+		// Canceling edit
 	} else {
 		// change check icon to edit icon
 		const icon = note.querySelector(".fa-check");
@@ -121,7 +124,7 @@ function removeNote(e) {
 
 function editNote(e) {
 	// If clicking Note icon
-	if(e.target.classList.contains("fa-edit")) {
+	if (e.target.classList.contains("fa-edit")) {
 		const note = e.target.parentNode;
 		// e.target = i
 		const noteElement = note.querySelector("p");
@@ -144,13 +147,16 @@ function editNote(e) {
 
 function saveEditedNote(e) {
 	// If clicking check icon
-	if(e.target.classList.contains("fa-check")) {
+	if (e.target.classList.contains("fa-check")) {
 		const note = e.target.parentNode;
 		const editedNote = note.querySelector("textarea");
 		const newNoteText = editedNote.value;
 		const oldNoteText = note.querySelector("p");
 		// if not duplicate with other in local storage && if the same with old note text
-		if(!(isDuplicate(newNoteText)) || oldNoteText.innerText === newNoteText) {
+		if (
+			!isDuplicate(newNoteText) ||
+			oldNoteText.innerText === newNoteText
+		) {
 			// Delete editing state
 			editedNote.remove();
 			// Create new note element
@@ -166,7 +172,7 @@ function saveEditedNote(e) {
 			saveToLocalStorage(oldNoteText.innerText, newNoteText);
 			// delete old note text
 			oldNoteText.remove();
-		// if duplicate
+			// if duplicate
 		} else {
 			showError(newNoteText);
 		}
@@ -174,22 +180,24 @@ function saveEditedNote(e) {
 }
 
 function isDuplicate(value) {
-	const storage = JSON.parse(localStorage.getItem("noteList"));
-	// If there is duplicate
-	for(let i = 0; i < storage.length; i++) {
-		if(storage[i] === value) {
-			return true;
-			break;
+	if (localStorage.getItem("noteList") !== null) {
+		const storage = JSON.parse(localStorage.getItem("noteList"));
+		// If there is duplicate
+		for (let i = 0; i < storage.length; i++) {
+			if (storage[i] === value) {
+				return true;
+				break;
+			}
 		}
+		return false;
 	}
-	return false;
 }
 
 function editIcon(icon) {
-	icon.classList.toggle('far');
-	icon.classList.toggle('fas');
-	icon.classList.toggle('fa-edit');
-	icon.classList.toggle('fa-check');
+	icon.classList.toggle("far");
+	icon.classList.toggle("fas");
+	icon.classList.toggle("fa-edit");
+	icon.classList.toggle("fa-check");
 }
 
 function searchNote() {
@@ -236,7 +244,7 @@ function saveToLocalStorage(note, newNote) {
 		notes = JSON.parse(localStorage.getItem("noteList"));
 	}
 	// if Updating note
-	if(notes.includes(note)) {
+	if (notes.includes(note)) {
 		const storageIndex = notes.indexOf(note);
 		notes[storageIndex] = newNote;
 	} // if Making new note
@@ -261,7 +269,7 @@ function changeTheme() {
 
 function saveThemeToLocal() {
 	let data = "";
-	if(body.classList.contains("active")) {
+	if (body.classList.contains("active")) {
 		data = "night";
 	} else {
 		data = "day";
@@ -272,9 +280,9 @@ function saveThemeToLocal() {
 function getTheme() {
 	let data = "";
 	// if data exist in local
-	if(localStorage.getItem("theme")) {
+	if (localStorage.getItem("theme")) {
 		data = JSON.parse(localStorage.getItem("theme"));
-		if(data === "night") {
+		if (data === "night") {
 			body.classList.add("active");
 			themes.classList.add("active");
 		}
@@ -282,7 +290,7 @@ function getTheme() {
 }
 
 function showError(text) {
-	if(isDuplicate(text)) {
+	if (isDuplicate(text)) {
 		error.innerHTML = "Note already exist";
 		setTimeout(() => {
 			error.innerHTML = "";

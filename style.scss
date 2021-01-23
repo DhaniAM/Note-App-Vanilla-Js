@@ -4,7 +4,7 @@
 	box-sizing: border-box;
 	outline: none;
 	border: none;
-	font-family:'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+	font-family: "Segoe UI", Tahoma, Geneva, Verdana, sans-serif;
 }
 
 body {
@@ -13,7 +13,7 @@ body {
 	flex-flow: column wrap;
 	// width: 100vw;
 	min-height: 100vh;
-	background: linear-gradient(120deg,#e0c3fc,#8ec5fc);
+	background: linear-gradient(120deg, #e0c3fc, #8ec5fc);
 	position: relative;
 	// overflow-x: hidden;
 }
@@ -23,7 +23,7 @@ body {
 	flex-direction: row;
 	position: relative;
 	justify-content: center;
-	align-items:center;
+	align-items: center;
 	top: 2em;
 	max-width: 100%;
 }
@@ -32,7 +32,7 @@ body {
 	transition: all 0.5s ease;
 	width: 450px;
 	margin-right: 30px;
-	
+
 	& input {
 		font-size: 1.4em;
 		background-color: #fafafa;
@@ -41,7 +41,7 @@ body {
 		box-shadow: 0px 1px 3px rgb(143, 143, 143);
 		border-radius: 50px;
 		transition: all 0.5s ease;
-		
+
 		&::placeholder {
 			opacity: 0.5;
 			transition: all 0.5s ease;
@@ -77,7 +77,7 @@ body {
 	transition: all 0.5s ease;
 	margin-right: 25px;
 	width: 200px;
-	
+
 	& input {
 		box-shadow: 0px 1px 3px rgb(143, 143, 143);
 		border-radius: 50px;
@@ -142,7 +142,7 @@ body {
 	transition: all 0.5s ease;
 	opacity: 1;
 	font-size: 1em;
-	
+
 	& p {
 		width: inherit;
 		padding: 1.3rem;
@@ -164,7 +164,7 @@ body {
 	}
 
 	& textarea {
-		width: inherit;
+		width: 100%;
 		border-radius: 15px;
 		height: 10em;
 		resize: none;
@@ -172,7 +172,7 @@ body {
 		padding: 1.3rem;
 		margin-top: 0.5rem;
 		overflow-wrap: break-word;
-		color: #1A1B2F;
+		color: #1a1b2f;
 		background: linear-gradient(
 			to right,
 			#f89bac 0%,
@@ -210,7 +210,7 @@ body {
 
 .themes {
 	position: relative;
-	border: 5px solid #1A1B2F;
+	border: 5px solid #1a1b2f;
 	width: 100px;
 	height: 64px;
 	font-size: 2.5em;
@@ -219,7 +219,7 @@ body {
 	box-shadow: 0px 1px 3px rgb(143, 143, 143);
 	transition: all 0.5s ease;
 	cursor: pointer;
-	
+
 	& .day {
 		position: absolute;
 		display: inline-block;
@@ -232,11 +232,11 @@ body {
 		margin-top: -0.85em;
 		text-align: center;
 		line-height: 1.2em;
-		border: 5px solid #1A1B2F;
+		border: 5px solid #1a1b2f;
 		background-color: white;
 		transition: all 0.5s ease;
 		opacity: 1;
-		
+
 		& i {
 			position: absolute;
 			top: 50%;
@@ -246,7 +246,7 @@ body {
 			font-size: 0.7em;
 		}
 	}
-	
+
 	& .night {
 		width: 1.2em;
 		position: absolute;
@@ -261,7 +261,7 @@ body {
 		border-radius: 40px;
 		transition: all 0.5s ease;
 		opacity: 0;
-		border: 5px solid #1A1B2F;
+		border: 5px solid #1a1b2f;
 
 		& i {
 			position: absolute;
@@ -274,22 +274,22 @@ body {
 	}
 
 	&.active {
-		background-color: #1A1B2F;
-		border: 5px solid #fafafa; 
+		background-color: #1a1b2f;
+		border: 5px solid #fafafa;
 		transition: all 0.5s ease;
-		
+
 		& .day {
 			opacity: 0;
 			transform: translateX(36px);
 			// display: none;
 			transition: all 0.5s ease;
 		}
-		
+
 		& .night {
 			visibility: visible;
 			color: #fafafa;
 			border: 5px solid #fafafa;
-			background-color: #1A1B2F;
+			background-color: #1a1b2f;
 			transform: translateX(36px);
 			transition: all 0.5s ease;
 			opacity: 1;
@@ -299,55 +299,30 @@ body {
 
 // Dark Mode
 body.active {
-	background: linear-gradient(120deg, #2C3E50, #1A1B2F);
+	background: linear-gradient(-120deg, #2c3e50, #1a1b2f);
 	& .note {
-		background: linear-gradient(to top, #141e30, #243b55);
-		border: 3px solid #fafafa;
-		box-shadow: 0px 0px 2px #fafafa;
+		background: linear-gradient(to right, #141e30, #243b55);
+		border: 1px solid #fafafa;
+		box-shadow: 0px 1px 2px #fafafa;
 		color: #e2e2e2;
 		transition: all 0.5s ease;
 
 		& textarea {
-			background: linear-gradient(to top, #0b223b,#151f31);
+			background: linear-gradient(to top, #0b223b, #151f31);
 			color: #fafafa;
 		}
 	}
 
 	& .input {
 		& input {
-			background-color: #1A1B2F;
+			background-color: #1a1b2f;
 			box-shadow: 0px 1px 2px #fafafa;
 			transition: all 0.5s ease;
-			border: 3px solid #fafafa;
+			border: 2px solid #fafafa;
 			color: #fafafa;
 
 			&::placeholder {
-				color:rgb(197, 197, 197);
-				transition: all 0.5s ease;
-			}
-
-			&:focus {
-				box-shadow: 0px 1px 10px #dbdbdb;
-				transition: all 0.5s ease;
-			}
-		}
-		& button{
-			color:#E74C06;
-			transition: all 0.5s ease;
-			background:  #1A1B2F;
-		}
-	}
-
-	& .search {
-		& input {
-			background-color: #1A1B2F;
-			box-shadow: 0px 1px 2px #fafafa;
-			transition: all 0.5s ease;
-			border: 3px solid #fafafa;
-			color: #fafafa;
-
-			&::placeholder {
-				color:rgb(197, 197, 197);
+				color: rgb(197, 197, 197);
 				transition: all 0.5s ease;
 			}
 
@@ -357,7 +332,32 @@ body.active {
 			}
 		}
 		& button {
-			color: #E74C06;
+			color: #e74c06;
+			transition: all 0.5s ease;
+			background: #1a1b2f;
+		}
+	}
+
+	& .search {
+		& input {
+			background-color: #1a1b2f;
+			box-shadow: 0px 1px 2px #fafafa;
+			transition: all 0.5s ease;
+			border: 2px solid #fafafa;
+			color: #fafafa;
+
+			&::placeholder {
+				color: rgb(197, 197, 197);
+				transition: all 0.5s ease;
+			}
+
+			&:focus {
+				box-shadow: 0px 1px 10px #dbdbdb;
+				transition: all 0.5s ease;
+			}
+		}
+		& button {
+			color: #e74c06;
 			transition: all 0.5s ease;
 		}
 	}
@@ -391,17 +391,40 @@ body.active {
 
 @media (max-width: 480px) {
 	.head {
-		min-width: 352px;
+		min-width: 300px;
 	}
 	.input {
-		transform: scale(0.7);
+		width: 300px;
+
+		& input {
+			width: 300px;
+			font-size: 0.7rem;
+			padding: 10px 20px 10px 10px;
+		}
+
+		& button {
+			font-size: 1.2rem;
+			margin-top: -0.9rem;
+			right: 10px;
+		}
 	}
 
 	.search {
 		margin-top: 0rem;
-		transform: scale(0.7);
+		width: 150px;
+
+		& input {
+			width: 150px;
+			padding: 7px;
+			font-size: 0.7rem;
+		}
+
+		& button {
+			font-size: 1.2rem;
+			margin-top: -1.4rem;
+		}
 	}
-	
+
 	.themes {
 		margin-top: 0.4rem;
 		margin-right: 0px;
